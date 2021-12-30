@@ -175,8 +175,8 @@ var table = new Vue({
 	  },
 	  emptyLocalStorage(){
 		  console.log(this.EditId);
-		  //localStorage.removeItem('todolist');
-		  //localStorage.removeItem('saveid');
+		  localStorage.removeItem('todolist');
+		  localStorage.removeItem('saveid');
 	  }
   }
 })
