@@ -1,0 +1,13 @@
+html, body {
+    margin: 5px;
+    padding: 0;
+}
+
+td{
+	border: 4px double black;
+	width: 20%;
+}
+.bordered
+{
+	border: 1px solid black;
+}

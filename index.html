@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+    
+		<div id="table" class="bordered">
+		  <table>
+			<th colspan="8">Список задач</th>
+			<tr v-for="i in todolist">
+			<td>{{ i.id }}</td>
+			<td v-if="i.compleated===false"  v-on:click="doneTask(i.id)">{{ i.name }}</td>
+			<td v-else  v-on:click="doneTask(i.id)"><s>{{ i.name }}</s></td>
+			<td>{{ i.importance }}</td>
+			<td>{{ i.time }}</td>
+			<td><button v-on:click="editTask(i.id)">edit</button></td>
+			<td><button v-on:click="del(i.id)">del</button></td>
+			</td>
+		  </table>
+		<div class="bordered">
+			<div v-if="isadded===true">Добавить Задание</div>
+			<div v-else>Редактировать задание {{ EditId }}</div>
+			<div>название</div>
+			<input v-model="taskName" placeholder="Ведите текст">
+			<div>важность</div>
+			<select v-model="selected">
+			  <option disabled value="">Выберите один из вариантов</option>
+			  <option>очень важно</option>
+			  <option>важно</option>
+			  <option>не очень важно</option>
+			  <option>вообще не важно</option>
+			</select>
+			<div>Выполненность</div>
+			<div>
+				<input name="isdone" type="radio" id="one" value="undone" v-model="picked">
+					<label for="undone">Не сделано</label>
+					<br>
+					<input name="isdone" type="radio" id="two" value="done" v-model="picked">
+					<label for="done">Сделано</label>
+					<br>
+			</div>
+			<div>Время</div>
+			<div>
+				<input type="checkbox" id="Утро" value="Утро" v-model="taskTime">
+				<label for="Утро">Утро</label>
+				<input type="checkbox" id="День" value="День" v-model="taskTime">
+				<label for="День">День</label>
+				<input type="checkbox" id="Вечер" value="Вечер" v-model="taskTime">
+				<label for="Вечер">Вечер</label>
+			</div>
+		</div>
+		<div v-if='isadded===true'><button v-on:click="addOne">add</button></div>
+		<div v-else><button v-on:click="saveChanges(EditId)">save</button></div>
+		<button v-on:click="cancel()">cancel</button>
+		</div>
+		<button v-on:click="emptyLocalStorage()">EMPTY LOCAL STORAGE</button>
+        <script src="index.js"></script>
+    </body>
+</html>
